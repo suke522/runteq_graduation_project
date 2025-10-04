@@ -1,0 +1,2 @@
+class PlayLog < ApplicationRecord
+end
