@@ -1,0 +1,15 @@
+<header>
+  <nav class="flex items-center justify-between px-6 py-3 bg-white shadow">
+    <!-- 左側：ロゴ -->
+    <div class="flex items-center">
+      <%= link_to root_path, class: "flex items-center space-x-2" do %>
+        <%= image_tag "logo.png", alt: "Logo", class: "h-8 w-auto" %>
+      <% end %>
+
+    <!-- 右側：メニューとボタン -->
+      <!-- 新規登録・ログインボタン -->
+      <%= link_to "新規登録", "#", class: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition" %>
+      <%= link_to "ログイン", "#", class: "px-4 py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition" %>
+    </div>
+  </nav>
+</header>
