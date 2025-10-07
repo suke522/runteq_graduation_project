@@ -1,9 +1,12 @@
 # Ruby のベースイメージを指定
 FROM ruby:3.3.6
 
+ARG UID=1000
+
 # 環境変数の設定
 ENV LANG C.UTF-8  # 日本語対応
 ENV TZ Asia/Tokyo # タイムゾーンを日本に設定
+ENV BUNDLE_APP_CONFIG /myapp/.bundle
 
 # 必要なパッケージのインストール
 RUN apt-get update -qq \
