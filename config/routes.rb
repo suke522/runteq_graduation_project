@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "static_pages#top"
+
+  resources :works, only: %i[index]
 end
