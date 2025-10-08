@@ -15,5 +15,6 @@ Rails.application.routes.draw do
 
   root "static_pages#top"
 
-  resources :works, only: %i[index]
+  resources :users, only: %i[new create]
+  resources :works, only: %i[index new create]
 end
