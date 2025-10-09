@@ -8,6 +8,7 @@
       <div class="bg-white shadow rounded-lg p-4 flex flex-col justify-between">
         <!-- タイトル -->
         <h2 class="text-lg font-semibold mb-2"><%= work.title %></h2>
+          <%= link_to work.title, work_path(work) %>
 
         <!-- メモ -->
         <p class="text-gray-600 mb-4"><%= truncate(work.memo, length: 100) %></p>
