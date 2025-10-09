@@ -18,6 +18,13 @@
           <%= work.status == 0 ? 'bg-yellow-200 text-yellow-800' : 'bg-green-200 text-green-800' %>">
           <%= work.status == 0 ? '未完了' : '完了' %>
         </span>
+        
+        <div class="mt-4 flex justify-end space-x-2">
+          <%= link_to '編集', edit_work_path(work), class: 'px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600' %>
+          <%= link_to '削除', work_path(work),
+                      data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' },
+                      class: 'px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600' %>
+        </div>
       </div>
     <% end %>
   </div>
