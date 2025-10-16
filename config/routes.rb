@@ -15,6 +15,13 @@ Rails.application.routes.draw do
 
   root "static_pages#top"
 
+  resources :works do
+    member do
+      get :select_record_method
+      get :timer
+      get :stopwatch
+    end
+  end
+
   resources :users, only: %i[new create]
-  resources :works, only: %i[index new create show edit destroy update]
 end

@@ -35,6 +35,8 @@ gem "bootsnap", require: false
 
 gem "devise"
 
+gem "enum_help"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -49,6 +51,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "tailwindcss-rails"
+
+  gem "foreman"
 end
 
 group :development do

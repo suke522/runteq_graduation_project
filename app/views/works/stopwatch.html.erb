@@ -1,0 +1,30 @@
+<%= form_with model: @work, local: true do |form| %>
+  <!-- <div style="background: lightblue; padding: 10px; margin: 10px; border: 2px solid blue;">
+    <h4>🔍 デバッグ情報</h4>
+    <p><strong>params[:work_id]:</strong> <%= params[:work_id] %></p>
+    <p><strong>params[:id]:</strong> <%= params[:id] %></p>
+    <p><strong>@work.persisted?:</strong> <%= @work.persisted? %></p>
+    <p><strong>@work.id:</strong> <%= @work.id if @work.persisted? %></p>
+    <p><strong>@work.title:</strong> "<%= @work.title %>"</p>
+    <p><strong>現在のURL:</strong> <%= request.url %></p>
+  </div> -->
+
+  <div data-controller="stopwatch">
+    <h2>ストップウォッチで記録</h2>
+
+    <div id="stopwatch-display"
+      data-stopwatch-target="display"
+      class="text-2xl my-4">00:00:00
+    </div>
+
+    <button type="button" data-action="click->stopwatch#start"
+      class="btn btn-primary">スタート</button>
+    <button type="button" data-action="click->stopwatch#stop"
+      class="btn btn-secondary">ストップ</button>
+    <button type="button" data-action="click->stopwatch#reset"
+      class="btn btn-danger">リセット</button>
+    <button type="button" data-action="click->stopwatch#save"
+      class="btn btn-success">保存</button>
+
+    <%= form.hidden_field :duration, data: { stopwatch_target: "duration" } %>
+<% end %>

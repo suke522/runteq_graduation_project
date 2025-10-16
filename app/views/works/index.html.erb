@@ -1,31 +1,38 @@
 <h1 class="text-2xl font-bold mb-6">記録一覧</h1>
 
-<% if @works.empty? %>
-  <p class="text-gray-500">記録がありません。</p>
-<% else %>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-    <% @works.each do |work| %>
-      <div class="bg-white shadow rounded-lg p-4 flex flex-col justify-between">
-        <!-- タイトル -->
-        <h2 class="text-lg font-semibold mb-2"><%= work.title %></h2>
-          <%= link_to work.title, work_path(work) %>
 
-        <!-- メモ -->
-        <p class="text-gray-600 mb-4"><%= truncate(work.memo, length: 100) %></p>
+  <% if @works.empty? %>
+    <p class="text-gray-500">記録がありません。</p>
+  <% else %>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @works.each do |work| %>
+        <div class="bg-white shadow rounded-lg p-4 flex flex-col justify-between">
+          <!-- タイトル -->
+          <h2 class="text-lg font-semibold mb-2"><%= work.title %></h2>
+            <%= link_to work.title, work_path(work) %>
 
-        <!-- ステータス -->
-        <span class="inline-block px-3 py-1 rounded-full text-sm font-medium
-          <%= work.status == 0 ? 'bg-yellow-200 text-yellow-800' : 'bg-green-200 text-green-800' %>">
-          <%= work.status == 0 ? '未完了' : '完了' %>
-        </span>
+          <!-- メモ -->
+          <p class="text-gray-600 mb-4"><%= truncate(work.memo, length: 100) %></p>
+
+          <!-- 総時間 
+          <div class="mb-4">
+            <span class="block text-gray-700 font-semibold mb-2">総時間</span>
+            <p class="text-gray-700"><%= work.total %></p>
+          </div> -->
+
+          <!-- ステータス -->
+          <span class="inline-block px-3 py-1 rounded-full text-sm font-medium
+            <%= work.status == 0 ? 'bg-yellow-200 text-yellow-800' : 'bg-green-200 text-green-800' %>">
+            <%= work.status == 0 ? '未完了' : '完了' %>
+          </span>
         
-        <div class="mt-4 flex justify-end space-x-2">
-          <%= link_to '編集', edit_work_path(work), class: 'px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600' %>
-          <%= link_to '削除', work_path(work),
-                      data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' },
-                      class: 'px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600' %>
+          <div class="mt-4 flex justify-end space-x-2">
+            <%= link_to '編集', edit_work_path(work), class: 'px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600' %>
+            <%= link_to '削除', work_path(work),
+                        data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' },
+                        class: 'px-3 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600' %>
+          </div>
         </div>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+      <% end %>
+    </div>
+  <% end %>
