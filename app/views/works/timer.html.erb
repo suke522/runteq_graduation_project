@@ -1,0 +1,48 @@
+<h2>タイマーで記録</h2>
+
+<div id="timer-display" style="font-size: 2rem; margin: 20px 0;">00:00</div>
+
+<button id="start-timer" class="btn btn-primary">スタート</button>
+<button id="stop-timer" class="btn btn-secondary" disabled>ストップ</button>
+<button id="reset" class="btn btn-danger" disabled>リセット</button>
+<button data-action="click->timer#save">保存</button>
+
+
+<script>
+  let timerInterval;
+  let remainingSeconds = 0;
+
+  const display = document.getElementById("timer-display");
+  const startButton = document.getElementById("start-timer");
+  const stopButton = document.getElementById("stop-timer");
+
+  startButton.addEventListener("click", () => {
+    const minutes = prompt("何分計測しますか？", 5);
+    if (!minutes) return;
+    remainingSeconds = minutes * 60;
+
+    startButton.disabled = true;
+    stopButton.disabled = false;
+
+    timerInterval = setInterval(() => {
+      remainingSeconds--;
+      const min = String(Math.floor(remainingSeconds / 60)).padStart(2, "0");
+      const sec = String(remainingSeconds % 60).padStart(2, "0");
+      display.textContent = `${min}:${sec}`;
+
+      if (remainingSeconds <= 0) {
+        clearInterval(timerInterval);
+        alert("タイマーが終了しました！");
+        startButton.disabled = false;
+        stopButton.disabled = true;
+      }
+    }, 1000);
+  });
+
+  stopButton.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    alert("タイマーを停止しました。");
+    startButton.disabled = false;
+    stopButton.disabled = true;
+  });
+</script>

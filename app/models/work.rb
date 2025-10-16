@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   validates :title, presence: true, length: { maximum: 255 }
-  validates :memo, presence: true, length: { maximum: 65_535 }
+  validates :memo, length: { maximum: 65_535 }
 
   belongs_to :user
 

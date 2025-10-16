@@ -1,0 +1,30 @@
+<div class="max-w-4xl mx-auto mt-10 text-center">
+  <h1 class="text-3xl font-bold mb-8">記録方法を選択</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+    <!-- 手動入力 は保留
+    <div class="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition">
+      <h2 class="text-xl font-semibold mb-4">📝 手動入力</h2>
+      <p class="text-gray-600 mb-6">自分で開始・終了時間を入力して記録します。</p>
+      <%= link_to '手動で記録', new_work_path(mode: 'manual'),
+          class: "block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" %>
+    </div> -->
+
+    <!-- タイマー -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition">
+      <h2 class="text-xl font-semibold mb-4">⏱ タイマー</h2>
+      <p class="text-gray-600 mb-6">あらかじめ設定した時間で自動的に記録します。</p>
+      <%= link_to 'タイマー', timer_work_path(@work, mode: 'timer'),
+          class: "block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition" %>
+    </div>
+
+    <!-- ストップウォッチ -->
+    <div class="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition">
+      <h2 class="text-xl font-semibold mb-4">🕒 ストップウォッチ</h2>
+      <p class="text-gray-600 mb-6">開始・停止ボタンで記録します。</p>
+      <%= link_to 'ストップウォッチ', stopwatch_work_path(@work, mode: 'stopwatch'),
+          class: "block px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition" %>
+    </div>
+  </div>
+</div>
