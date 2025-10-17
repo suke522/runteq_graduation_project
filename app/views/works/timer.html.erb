@@ -5,24 +5,66 @@
 <button id="start-timer" class="btn btn-primary">スタート</button>
 <button id="stop-timer" class="btn btn-secondary" disabled>ストップ</button>
 <button id="reset" class="btn btn-danger" disabled>リセット</button>
-<button data-action="click->timer#save">保存</button>
+<button id="save-timer" class="btn btn-success" disabled>保存</button>
 
 
 <script>
   let timerInterval;
   let remainingSeconds = 0;
+  let settingMinutes = 0;
 
   const display = document.getElementById("timer-display");
   const startButton = document.getElementById("start-timer");
   const stopButton = document.getElementById("stop-timer");
+  const resetButton = document.getElementById("reset");
+  const saveButton = document.getElementById("save-timer");
+
+  function getActualTime(settingMinutes, remainingSeconds) {
+    // 設定時間（秒）から残り時間（秒）を引いて経過時間を計算
+    const totalSeconds = settingMinutes * 60;
+    const elapsedSeconds = totalSeconds - remainingSeconds;
+    
+    // 経過時間を「分:秒」形式に変換
+    const min = String(Math.floor(elapsedSeconds / 60)).padStart(2, "0");
+    const sec = String(elapsedSeconds % 60).padStart(2, "0");
+    
+    return `${min}:${sec}`;
+  }
+
+  function saveTimerRecord(status) {
+    const actualTime = getActualTime(settingMinutes, remainingSeconds);
+    
+    const record = {
+      settingMinutes: settingMinutes,
+      actualTime: actualTime,
+      status: status,
+      timestamp: new Date().toISOString(),
+      id: Date.now()
+    };
+    
+    // ローカルストレージから既存のデータを取得
+    const existingRecords = JSON.parse(localStorage.getItem('timerRecords') || '[]');
+    
+    // 新しいレコードを追加
+    existingRecords.push(record);
+    
+    // ローカルストレージに保存
+    localStorage.setItem('timerRecords', JSON.stringify(existingRecords));
+    
+    console.log('保存されたデータ:', record);
+    return record;
+  }
 
   startButton.addEventListener("click", () => {
     const minutes = prompt("何分計測しますか？", 5);
     if (!minutes) return;
+    settingMinutes = parseInt(minutes);
     remainingSeconds = minutes * 60;
 
     startButton.disabled = true;
     stopButton.disabled = false;
+    resetButton.disabled = false;
+    saveButton.disabled = false;
 
     timerInterval = setInterval(() => {
       remainingSeconds--;
@@ -32,9 +74,11 @@
 
       if (remainingSeconds <= 0) {
         clearInterval(timerInterval);
+        saveTimerRecord("completed");
         alert("タイマーが終了しました！");
         startButton.disabled = false;
         stopButton.disabled = true;
+        saveButton.disabled = true;
       }
     }, 1000);
   });
@@ -44,5 +88,30 @@
     alert("タイマーを停止しました。");
     startButton.disabled = false;
     stopButton.disabled = true;
+  });
+
+  resetButton.addEventListener("click", () => {
+  // タイマーが動いていたら停止
+  clearInterval(timerInterval);
+  
+  // タイマー表示を初期状態に戻す
+  display.textContent = "00:00";
+  remainingSeconds = 0;
+  
+  // ボタンの状態を初期状態に戻す
+  startButton.disabled = false;
+  stopButton.disabled = true;
+  resetButton.disabled = true;
+  saveButton.disabled = true; 
+  
+  alert("タイマーをリセットしました。");
+  });
+
+  saveButton.addEventListener("click", () => {
+  saveTimerRecord("manual_save");
+
+  saveButton.disabled = true;
+
+  alert("保存しました。");
   });
 </script>
