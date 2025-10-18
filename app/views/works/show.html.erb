@@ -23,12 +23,6 @@
     <p class="text-gray-600 whitespace-pre-line"><%= @work.memo.presence || "メモはありません。" %></p>
   </div>
 
-  <%# 作成・更新日時 
-  <div class="text-sm text-gray-500 mb-6">
-    <p>ポケモン: <%= l(@work.created_at, format: :long) %></p>
-    <p>最終更新日: <%= l(@work.updated_at, format: :long) %></p>
-  </div> %>
-
   <div class="mt-4 flex justify-end space-x-2">
           <%= link_to '編集', edit_work_path(@work), class: 'px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600' %>
           <%= link_to '削除', work_path(@work),
