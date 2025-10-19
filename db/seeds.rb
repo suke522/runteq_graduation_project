@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+#　本番環境のデータを削除
+Work.delete_all
+puts "Work テーブルの全データを削除しました。"
