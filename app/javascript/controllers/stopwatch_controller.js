@@ -55,5 +55,7 @@ export default class extends Controller {
 
     const token = document.querySelector('meta[name="csrf-token"]').content
 
+    alert(`保存しました！経過時間: ${totalMinutes}分`)
+
   }
 }
