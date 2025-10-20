@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.includes(:user)
+    @works = current_user.works.includes(:user)
   end
 
   def new

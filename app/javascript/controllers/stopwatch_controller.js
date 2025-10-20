@@ -55,7 +55,5 @@ export default class extends Controller {
 
     const token = document.querySelector('meta[name="csrf-token"]').content
 
-    // 記録作成画面にリダイレクト（時間をパラメータで渡す）
-    window.location.href = `/works/new?total=${totalMinutes}`
   }
 }
