@@ -1,0 +1,29 @@
+ja:
+  users:
+    passwords:
+      edit:
+
+      new:
+        forgot_password: "パスワードの再設定"
+        send_email: "パスワード再設定用のメールを送信する"
+    registrations:
+      new: 
+        sign_up: "新規登録"
+        characters_minimum: "文字以上"
+        register: "登録する"
+    sessions:
+      new:
+        login: "ログイン"
+        remember_me: "次回以降自動でログインする"
+    shared:
+      error_messages:
+        not_saved:
+          one: "%{resource}が保存できませんでした（1件のエラーがあります）"
+          other: "%{resource}が保存できませんでした（%{count}件のエラーがあります）"
+      links:
+        login: "ログイン"
+        signup: "ユーザー登録"
+        forgot_password: "パスワードをお忘れの方はこちら"
+        resend_confirmation: "確認メールを再送する"
+        resend_unlock: "アカウントロック解除メールを再送する"
+        omniauth_login: "%{provider}でログイン"
