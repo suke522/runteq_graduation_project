@@ -29,5 +29,4 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[new create]
-
 end
