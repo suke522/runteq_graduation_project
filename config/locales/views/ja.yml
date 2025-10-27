@@ -2,7 +2,11 @@ ja:
   users:
     passwords:
       edit:
-
+        change_password: "パスワード再発行"
+        new_password: "新しいパスワード"
+        characters_minimum: "文字以上"
+        confirm_new_password: "新しいパスワード（確認用）"
+        change_my_password: "再発行"
       new:
         forgot_password: "パスワードの再設定"
         send_email: "パスワード再設定用のメールを送信する"
