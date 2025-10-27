@@ -41,7 +41,14 @@ Rails.application.configure do
   # caching is enabled.
   config.action_mailer.perform_caching = false
 
+
+  # 開発環境でメールを letter_opener_web で開く
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_deliveries = true
+
+  # Devise 用のメールURL設定（ドメイン部分）
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
