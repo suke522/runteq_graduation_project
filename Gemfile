@@ -39,7 +39,7 @@ gem "enum_help"
 
 gem "rails-i18n", "~> 7.0.0"
 
-gem "letter_opener_web", "2.0.0"
+gem "letter_opener_web", "3.0.0"
 
 gem "config"
 
