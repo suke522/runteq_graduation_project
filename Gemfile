@@ -60,9 +60,9 @@ group :development, :test do
 
   gem "foreman"
 
-  gem 'rspec-rails'
-  
-  gem 'factory_bot_rails'
+  gem "rspec-rails"
+
+  gem "factory_bot_rails"
 end
 
 group :development do
