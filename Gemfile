@@ -59,6 +59,10 @@ group :development, :test do
   gem "tailwindcss-rails"
 
   gem "foreman"
+
+  gem 'rspec-rails'
+  
+  gem 'factory_bot_rails'
 end
 
 group :development do
