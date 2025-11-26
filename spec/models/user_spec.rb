@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'バリデーションチェック' do
+    it '有効なユーザーが作成できるか' do
+      user = User.new(
+        email: "test@example.com",
+        password: "password123"
+      )
+    end
+  end
 end
